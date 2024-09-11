@@ -56,17 +56,92 @@ devs = [
     }
 ]
 
+"""
 #Rota / -> Listar os endpoints disponíveis
 @app.route('/', methods=['GET'])
 def inicial():
-    return '''Rota /devs -> LISTAR todos os desenvolvedores cadastrados<br>
-	      Rota /devs/[linguagem de programação] -> LISTAR desenvolvedores POR ling. programação<br>
-	      Rota /devs/[id] -> LISTAR desenvolvedor POR ID<br>
-	      <HR> 
-	      Rota /devs/[id] - Método PUT -> ATUALIZAR desenvolvedor POR ID<br>
-	      Rota /devs/[id] - Método DELETE -> Exclui desenvolvedor por id<br>
-	      Rota /devs - Método POST -> INSERIR desenvolvedor<br>
+    return '''- /devs - Método GET -> LISTAR todos os desenvolvedores cadastrados<br>
+	      - /devs/[linguagem de programação] - Método GET -> LISTAR desenvolvedores POR ling. programação<br>
+	      - /devs/[id] - Método GET -> LISTAR desenvolvedor POR ID<br>
+	      - /devs/[id] - Método PUT -> ATUALIZAR desenvolvedor POR ID<br>
+	      - /devs/[id] - Método DELETE -> Exclui desenvolvedor por id<br>
+	      - /devs - Método POST -> INSERIR desenvolvedor<br>
 ''', 200
+"""
+
+#Rota / -> Listar os endpoints disponíveis
+@app.route('/', methods=['GET'])
+def inicial():
+    return '''
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Uso da API Devs</title>
+            <style>
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                table, th, td {
+                    border: 1px solid black;
+                }
+                th, td {
+                    padding: 10px;
+                    text-align: left;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+            </style>
+        </head>
+        <body>
+            <h1> API Desenvolvedores </h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rotas</th>
+                        <th>Método HTTP</th>
+                        <th>Função</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>/devs</td>
+                        <td>GET</td>
+                        <td>LISTAR todos os desenvolvedores cadastrados</td>
+                    </tr>
+                    <tr>
+                        <td>/devs/[linguagem de programação]</td>
+                        <td>GET</td>
+                        <td>LISTAR desenvolvedores POR ling. programação</td>
+                    </tr>
+                    <tr>
+                        <td>/devs/[id]</td>
+                        <td>GET</td>
+                        <td>LISTAR desenvolvedor POR ID</td>
+                    </tr>
+                    <tr>
+                        <td>/devs/[id]</td>
+                        <td>PUT</td>
+                        <td>ATUALIZAR desenvolvedor POR ID</td>
+                    </tr>
+                    <tr>
+                        <td>/devs/[id]</td>
+                        <td>DELETE</td>
+                        <td>EXCLUIR desenvolvedor por id</td>
+                    </tr>
+                    <tr>
+                        <td>/devs</td>
+                        <td>POST</td>
+                        <td>INSERIR desenvolvedor</td>
+                    </tr>
+                </tbody>
+            </table>
+        </body>
+        </html>
+        ''', 200
 
 # Rota /devs -> LISTAR todos os desenvolvedores cadastrados
 @app.route('/devs', methods=['GET'])
