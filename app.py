@@ -97,7 +97,7 @@ def inicial():
             </style>
         </head>
         <body>
-            <h1> API Desenvolvedores </h1>
+            <h1> API Devs </h1>
             <table>
                 <thead>
                     <tr>
