@@ -151,7 +151,7 @@ def home():
 # Rota /devs/<linguagem de programação> -> LISTAR desenvolvedores POR ling. programação
 @app.route('/devs/<string:lang>', methods=['GET'])
 def devs_per_lang(lang):
-    devs_per_lang = [dev for dev in devs if dev['lang'].lower() == lang]
+    devs_per_lang = [dev for dev in devs if dev['lang'].lower() == lang.lower()]
     return jsonify(devs_per_lang), 200
 
 # Rota /devs/<id> Método PUT -> ATUALIZAR desenvolvedor POR ID
